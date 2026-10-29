@@ -1,0 +1,91 @@
+FORTALECE PSE — VOZES DO BRASIL
+PUBLICAÇÃO GRATUITA — GITHUB PAGES + SUPABASE
+Pacote de publicação v4.0 — IDENTIDADE VISUAL PRESERVADA DA VERSÃO 3.5
+
+NÃO É NECESSÁRIO INSTALAR NODE.JS EM SERVIDOR ONLINE.
+Este novo pacote usa páginas estáticas no GitHub Pages e serviços Supabase.
+
+IMPORTANTE:
+  - A publicação NÃO ESTÁ ATIVA ainda. Você precisa criar suas contas e configurar.
+  - Este ZIP não contém informações reais dos voluntários nem chaves privadas.
+  - Não envie o arquivo google-service-account.json, o arquivo data/voluntarios.json
+    nem credenciais do projeto Windows v3.5 para repositório público.
+  - O site só exibirá perfis aprovados pelo administrador.
+
+ETAPA 1: CRIAR CONTA GITHUB
+  1. Acesse https://github.com/signup e cadastre um e-mail.
+  2. Confirme o e-mail. Ative a verificação em duas etapas.
+  3. Crie repositório PÚBLICO chamado fortalece-pse-vozes-do-brasil.
+
+ETAPA 2: CRIAR SUPABASE
+  1. Acesse https://supabase.com/dashboard e crie conta/projeto gratuito.
+  2. Nome sugerido: mostra-nacional-pse.
+  3. Em SQL Editor, cole e execute supabase/01-criar-banco.sql.
+  4. Authentication > Users > Add user: cadastre seu e-mail e senha fortes.
+  5. SQL Editor: execute:
+     insert into public.admins(user_id)
+     select id from auth.users where lower(email)=lower('SEU_EMAIL_AQUI')
+     on conflict do nothing;
+  6. Authentication > Providers > Email: desabilite novos cadastros públicos
+     (usuário administrador pode ser criado pelo dashboard).
+  7. Em Project Settings/API Keys ou Connect, copie:
+     - Project URL: https://....supabase.co
+     - publishable key (chave publicável; pode ir no navegador)
+     - chave LEGACY service_role JWT (NUNCA vai no navegador).
+  8. Preencha docs/config.js APENAS com a URL e a chave publicável.
+
+ETAPA 3: PUBLICAR NO GITHUB
+  1. Instale o GitHub Desktop (https://desktop.github.com/).
+  2. Clone o repositório criado e copie para ele o CONTEÚDO deste ZIP:
+       docs/, scripts/, supabase/, .github/, .gitignore, COMECE-AQUI.txt
+     (preserve arquivos e subpastas, sem enviar arquivos privados).
+  3. No GitHub Desktop, faça Commit e depois Push origin.
+  4. No site GitHub, Settings > Pages > Build and deployment:
+       Source: Deploy from a branch
+       Branch: main
+       Folder: /docs
+       Save.
+  5. Endereço será parecido com:
+       https://SEU_USUARIO.github.io/fortalece-pse-vozes-do-brasil/
+     Administração:
+       https://SEU_USUARIO.github.io/fortalece-pse-vozes-do-brasil/admin.html
+  6. Configure no Supabase Authentication > URL Configuration o Site URL
+     com o endereço publicado; adicione o mesmo endereço em Redirect URLs.
+
+ETAPA 4: ATIVAR SINCRONIZAÇÃO GOOGLE FORMS
+  1. Sua planilha JÁ ESTÁ CONFIGURADA no script: ID e aba exatos.
+  2. Google Cloud: use a conta de serviço existente (MOSTRA PSE).
+  3. Confira Sheets API, Drive API, leitor da planilha e pasta de fotografias.
+  4. GitHub > Settings > Secrets and variables > Actions:
+     Cadastre Repository secrets (sem aspas):
+       SUPABASE_URL              = Project URL
+       SUPABASE_SERVICE_ROLE_KEY = JWT legacy service_role (segredo privado)
+       GOOGLE_SERVICE_ACCOUNT_JSON = CONTEÚDO COMPLETO do arquivo privado JSON
+     NÃO COLOQUE ESSES TRÊS VALORES EM docs/config.js.
+  5. GitHub > Actions > Importar respostas do Google Sheets > Run workflow.
+  6. Verifique na aba Actions que a execução terminou com sucesso.
+  7. A cada 20 minutos, o GitHub tentará nova sincronização.
+     Agendamentos podem atrasar ou não rodar em alguns períodos.
+
+ETAPA 5: ADMINISTRAÇÃO
+  1. Acesse /admin.html com o e-mail e a senha cadastrados no Supabase.
+  2. Verifique os registros importados; imagens e cidade/UF.
+  3. Aprove apenas quem deve aparecer no mapa da mostra.
+
+ETAPA 6: DADOS DO WINDOWS V3.5 (OPCIONAL)
+  - Este ZIP NÃO inclui os registros já cadastrados no Windows.
+  - Veja abaixo no README.md como migrá-los com script local, mantendo fotos.
+  - Não carregue o antigo arquivo de voluntários em repositório público.
+
+DETALHES TÉCNICOS
+  supabase/01-criar-banco.sql   tabelas, autenticação RLS e fotos privadas
+  docs/index.html              site e mapa 27 UFs (visual da versão 3.5)
+  docs/admin.html              editor autenticado
+  docs/config.js               APENAS URL e chave pública do Supabase
+  .github/workflows/           execução agendada
+  scripts/sincronizar-sheets.mjs  importação aprovada somente após revisão
+  scripts/migrar-local.mjs     migração opcional do Windows
+
+CUIDADO: no plano gratuito, o Supabase pode pausar por inatividade;
+GitHub Actions pode atrasar as execuções e tem limites de uso.
+Para evento de grande audiência, ensaie e mantenha backup.

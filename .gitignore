@@ -1,0 +1,13 @@
+# SEGURANÇA: NUNCA publique dados locais nem chaves privadas
+.env
+.env.*
+!*.example
+**/google-service-account.json
+**/acesso-admin.json
+**/voluntarios.json
+**/uploads/**
+!**/uploads/.gitkeep
+**/*service-role*
+**/*private-key*
+node_modules/
+.DS_Store
