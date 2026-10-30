@@ -1,0 +1,10 @@
+MOSTRA PSE V5.2 — ATUALIZAÇÃO PRONTA PARA GITHUB PAGES
+
+1. NÃO APAGUE a pasta atual do repositório.
+2. Copie o CONTEÚDO deste pacote para a RAIZ do repositório já existente.
+3. Mantenha docs/admin.*, scripts/, supabase/ e .github/ intactos.
+4. Confira npm run check e npm run dev antes do commit.
+5. Faça Commit + Push no GitHub Desktop; o GitHub Pages usa main /docs.
+6. Leia GUIA-DE-PUBLICACAO.md para o passo a passo completo.
+
+O arquivo docs/config.js contém apenas a chave pública existente; os segredos não estão aqui.

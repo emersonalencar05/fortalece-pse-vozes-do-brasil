@@ -1,5 +1,5 @@
-// É SEGURO publicar apenas a Project URL e a chave PUBLISHABLE/anon do Supabase.
-// NUNCA inclua aqui a service_role, senhas nem a chave JSON do Google.
+// Configuração PÚBLICA compartilhada pelo frontend e painel administrativo.
+// Nunca colocar service_role, credencial do Google ou senhas neste arquivo.
 window.FPSE_CONFIG = {
   supabaseUrl: "https://gwfwkcjyyjnxkxvbesho.supabase.co",
   publishableKey: "sb_publishable_RI3wckqD6ly7B6_9N-7jwg_cbJA3Op8"

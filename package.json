@@ -1,0 +1,12 @@
+{
+  "name": "mostra-pse-github-pages",
+  "private": true,
+  "version": "5.2.0",
+  "type": "module",
+  "description": "Frontend formal da Mostra PSE, publicado por GitHub Pages em /docs e servido localmente pelo Node",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "check": "node --check docs/src/app.js && node --check docs/src/map-data.js && node --check docs/src/config.js && node --check server.mjs && node teste-integridade.mjs"
+  }
+}
