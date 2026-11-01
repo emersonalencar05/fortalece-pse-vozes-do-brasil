@@ -1,0 +1,2 @@
+# APENAS PARA TESTES LOCAIS, NÃO ENVIAR SEU ARQUIVO .dev.vars REAL AO GITHUB.
+OPENAI_API_KEY=coloque_sua_chave_apenas_no_arquivo_local

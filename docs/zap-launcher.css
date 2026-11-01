@@ -1,0 +1,26 @@
+/* Integração sem dependências: CTA na página inicial do mapa. */
+.home-page .zap-map-cta {
+  position:absolute; z-index:9; top:82%; right:4.7%; width:38%; min-height:3.7%;
+  display:flex; align-items:center; gap:1.1cqw; padding:1.05cqw 1.4cqw;
+  border:2px solid rgba(255,255,255,.92); border-radius:2.2cqw;
+  background:linear-gradient(125deg,#137963 0%,#0b6657 100%); color:#fff;
+  text-decoration:none; box-shadow:0 .75cqw 2.3cqw #123a3970;
+  font-family:'Montserrat',Arial,sans-serif; font-size:1.42cqw; font-weight:700;
+  line-height:1.28; transition:transform .2s ease,box-shadow .2s ease;
+}
+.home-page .zap-map-cta:hover {transform:translateY(-4px);box-shadow:0 1.1cqw 2.7cqw #123a3990}
+.home-page .zap-map-cta:focus-visible{outline:4px solid #f4d64e;outline-offset:4px}
+.home-page .zap-map-cta strong {display:block;font-size:1.95cqw;line-height:1.2}
+.home-page .zap-map-cta small {display:block;margin-top:.4cqw;font:500 1.08cqw/1.2 'Source Sans 3',Arial,sans-serif;color:#c8fbed}
+.home-page .zap-map-icon {flex:0 0 4.4cqw;width:4.4cqw;height:4.4cqw;border-radius:50%;display:grid;place-items:center;background:#fff;color:#11816f}
+.home-page .zap-map-icon svg{width:73%;height:73%}
+.home-page .zap-cta-arrow{font-size:2.3cqw;margin-left:auto;align-self:center}
+@media(max-width:650px){
+ .home-page .zap-map-cta{top:760px;left:42%;right:4%;width:54%;min-height:59px;padding:9px 10px;gap:8px;border-radius:16px;font-size:11px;box-shadow:0 5px 15px #0004}
+ .home-page .zap-map-icon{width:36px;height:36px;flex:0 0 36px}
+ .home-page .zap-map-cta strong{font-size:15px}
+ .home-page .zap-map-cta small{font-size:9px;margin-top:2px}
+ .home-page .zap-cta-arrow{font-size:15px}
+}
+@media(max-width:360px){.home-page .zap-map-cta{top:725px;left:39%;right:3%;width:58%}.home-page .zap-map-cta strong{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.home-page .zap-map-cta{transition:none}}

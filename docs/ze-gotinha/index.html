@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#304585">
+  <meta name="description" content="Zap do Zé Gotinha: converse, descubra e aprenda sobre saúde e o Programa Saúde na Escola na 1ª Mostra Nacional Fortalece PSE, Brasília 2026.">
+  <title>Zap do Zé Gotinha | 1ª Mostra Nacional Fortalece PSE</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="event-header" aria-label="Identidade do evento">
+      <div class="header-inner">
+        <a class="event-brand" href="#inicio" aria-label="Voltar ao início do Zap do Zé Gotinha">
+          <img src="assets/logo-fortalece-pse.webp" alt="Fortalece PSE!" width="743" height="413">
+        </a>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <div class="event-title">
+          <img src="assets/mostra-nacional.webp" alt="1ª Mostra Nacional Fortalece PSE — Brasília, DF — 24 e 25 de novembro de 2026" width="862" height="256">
+        </div>
+        <div class="header-right">
+          <span class="edition-mark"><span class="pulsing-dot"></span> EXPERIÊNCIA INTERATIVA</span>
+          <strong>O Zé Gotinha está on-line!</strong>
+          <small>Um espaço de saúde, diálogo e descobertas</small>
+        </div>
+      </div>
+    </header>
+
+    <nav class="site-nav" aria-label="Navegação da Mostra">
+      <a class="back-to-map" href="../" aria-label="Voltar ao mapa interativo da Mostra">← Voltar ao mapa da Mostra</a>
+      <span>1ª Mostra Nacional Fortalece PSE · Brasília, 24 e 25/11/2026</span>
+    </nav>
+    <div class="main-wrap" id="inicio">
+      <main class="experience" aria-label="Experiência Zap do Zé Gotinha">
+        <section class="hero-panel" aria-label="Apresentação do Zap do Zé Gotinha">
+          <img class="graphic-backdrop" src="assets/grafismos-pse.webp" alt="" aria-hidden="true">
+          <div class="hero-grid-pattern" aria-hidden="true"></div>
+          <div class="hero-inner">
+            <div class="hero-heading">
+              <span class="hero-eyebrow"><span class="eyebrow-spark">✳</span> SAÚDE NA ESCOLA, COM VOCÊ</span>
+              <h1>Deu <span>match</span><br>com a <em>saúde!</em></h1>
+              <p>O Zé Gotinha chegou no zap! Tire suas dúvidas, descubra curiosidades e aprenda brincando.</p>
+              <div class="hero-topics" aria-label="Assuntos de conversa">
+                <span>💉 Vacinação</span>
+                <span>💚 SUS</span>
+                <span>🎲 Quiz</span>
+              </div>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <span class="float-plus plus-one">+</span><span class="float-plus plus-two">✳</span>
+              <div class="chat-floating-sticker sticker-top"><span class="sticker-heart">💚</span> Ei, você por aqui!</div>
+              <img class="hero-mascot" src="assets/ze-gotinha.webp" alt="" width="950" height="950">
+              <div class="chat-floating-sticker sticker-bottom"><span class="bubble-symbol">✦</span> Bora conversar?</div>
+            </div>
+            <div class="hero-microcopy"><span class="decor-line"></span> UMA CONVERSA PODE TRANSFORMAR O MUNDO <span class="hero-mini-heart">♥</span></div>
+          </div>
+        </section>
+
+        <section class="chat-column" aria-label="Mensageiro do Zé Gotinha">
+          <div class="chat-frame">
+            <header class="chat-header">
+              <div class="chat-header-profile">
+                <div class="avatar-wrap"><img src="assets/ze-gotinha-avatar.png" alt="Perfil do Zé Gotinha segurando um celular" width="192" height="192"><span class="avatar-online"></span></div>
+                <div class="chat-person"><strong>Zé Gotinha <span class="verified" title="Assistente virtual com IA — não é atendimento oficial" aria-label="Assistente virtual com IA — não é atendimento oficial">✦</span></strong><span id="connection-status">Assistente virtual educativo • demonstração</span></div>
+              </div>
+              <div class="header-actions">
+                <button class="icon-button" id="voice-toggle" type="button" aria-label="Ativar leitura de respostas" title="Ativar leitura de respostas">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15 9a5 5 0 0 1 0 6"></path><path d="M18 6a9 9 0 0 1 0 12"></path></svg>
+                </button>
+                <button class="icon-button" id="reset-chat" type="button" aria-label="Começar uma nova conversa" title="Começar uma nova conversa">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 1 1-2.2-5.7"></path><path d="M20 3v5h-5"></path></svg>
+                </button>
+              </div>
+            </header>
+            <div class="chat-intro"><span class="intro-sparkle">✳</span><div><strong>Uma conversa, muitas descobertas!</strong><small>Pergunte sobre saúde e protagonismo juvenil 💙</small></div><span class="intro-badge">MOSTRA 2026</span></div>
+            <div class="chat-scroll" id="chat-scroll" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Mensagens da conversa">
+              <div class="chat-day"><span>HOJE</span></div>
+              <div class="notice">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                <span>Não compartilhe nome completo, telefone, endereço ou informações médicas pessoais.</span>
+              </div>
+              <div class="message message-bot welcome-message"><div class="bubble"><p>Ooooi! 👋💚 Eu sou o <strong>Zé Gotinha!</strong></p><p>Que alegria te encontrar na <strong>1ª Mostra Nacional Fortalece PSE!</strong> Me conta: o que você gostaria de descobrir hoje?</p><span class="bubble-meta" id="welcome-time">agora <span>✓✓</span></span></div></div>
+              <div id="chat-messages"></div>
+              <div class="typing message message-bot" id="typing" hidden aria-label="Zé Gotinha está digitando"><div class="bubble"><span></span><span></span><span></span></div></div>
+            </div>
+            <div class="chat-bottom">
+              <div id="mode-notice" class="mode-notice" role="status"><span class="mode-indicator"></span><span><strong>Modo demonstração:</strong> respostas ilustrativas. A IA real é ativada quando o servidor estiver configurado.</span></div>
+              <div class="mode-label">ESCOLHA O JEITO DE CONVERSAR</div>
+              <div class="mode-picker" id="mode-picker" role="group" aria-label="Modos da experiência">
+                <button type="button" data-mode="curiosidade" aria-pressed="false">✨ Curiosidades</button>
+                <button type="button" data-mode="quiz" aria-pressed="false">🎯 Quiz</button>
+                <button type="button" data-mode="fake-news" aria-pressed="false">🛡️ Fake news</button>
+                <button type="button" data-mode="livre" aria-pressed="true" class="selected">💬 Conversa livre</button>
+                <button type="button" data-mode="fortalece" aria-pressed="false">📚 Fortalece PSE</button>
+              </div>
+              <div class="suggestions" aria-label="Sugestões de perguntas" id="suggestions">
+                <button type="button" class="suggestion" data-question="Por que devo me vacinar?">💉 Vacinação</button>
+                <button type="button" class="suggestion" data-question="O que é o Programa Saúde na Escola?">🏫 O que é o PSE?</button>
+                <button type="button" class="suggestion" data-question="Vamos jogar um quiz sobre saúde!">🎲 Jogar quiz</button>
+                <button type="button" class="suggestion" data-question="Me conta uma curiosidade sobre o SUS!">💚 Curiosidades</button>
+              </div>
+              <form class="composer" id="chat-form">
+                <label class="sr-only" for="message-input">Digite sua pergunta</label>
+                <textarea id="message-input" name="message" rows="1" maxlength="500" placeholder="Manda uma mensagem pro Zé..." aria-label="Sua mensagem para o Zé Gotinha"></textarea>
+                <button class="send-button" id="send-button" type="submit" aria-label="Enviar mensagem" title="Enviar mensagem">
+                  <svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+                </button>
+              </form>
+              <p class="chat-disclaimer">Zé Gotinha virtual com IA • Não é canal oficial de atendimento • Não substitui profissionais de saúde<br><a href="privacidade.html">Como cuidamos da sua privacidade</a></p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer class="event-footer" aria-label="Instituições parceiras">
+      <div class="footer-inner"><div class="footer-label"><span>JUNTOS PELO PROTAGONISMO JUVENIL</span><strong>Saúde e educação caminhando juntas.</strong></div><img src="assets/instituicoes.webp" alt="Instituições parceiras do Fortalece PSE: UFSB, UFG, SUS, Ministério da Educação e Ministério da Saúde" width="916" height="82"><span class="footer-heart" aria-hidden="true">✳</span></div>
+    </footer>
+  </div>
+
+  <dialog class="confirm-dialog" id="clear-dialog" aria-labelledby="dialog-title"><h2 id="dialog-title">Começar uma nova conversa?</h2><p>As mensagens desta conversa serão apagadas deste navegador.</p><div class="dialog-actions"><button type="button" id="cancel-clear">Cancelar</button><button type="button" id="confirm-clear">Nova conversa</button></div></dialog>
+  <noscript><div class="no-js">Ative o JavaScript no navegador para conversar com o Zé Gotinha.</div></noscript>
+</body>
+</html>
