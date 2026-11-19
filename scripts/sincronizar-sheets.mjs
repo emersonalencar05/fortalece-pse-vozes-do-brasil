@@ -20,18 +20,33 @@ const UF_NAMES={
  'rio grande do sul':'RS','rondonia':'RO','roraima':'RR','santa catarina':'SC',
  'sao paulo':'SP','sergipe':'SE','tocantins':'TO'};
 const UF_LIST=new Set(Object.values(UF_NAMES));
-const CITIES={'rio de janeiro':'RJ','brasilia':'DF','goiania':'GO','rio branco':'AC','natal':'RN','florianopolis':'SC','joao pessoa':'PB','feira de santana':'BA'};
+const CITIES={
+ 'rio de janeiro':'RJ','brasilia':'DF','goiania':'GO','rio branco':'AC','natal':'RN',
+ 'florianopolis':'SC','joao pessoa':'PB','feira de santana':'BA',
+ 'palmas':'TO','montes claros':'MG','belo horizonte':'MG','recife':'PE',
+ 'aracaju':'SE','porto velho':'RO','sao luis':'MA','lagarto':'SE',
+ 'belem':'PA','barra do garcas':'MT'
+};
 function cidadeUF(raw){
  const original=String(raw||'').trim().replace(/\s+/g,' ');
  if(!original)return null;
  const normalized=norm(original);
  if(UF_LIST.has(original.toUpperCase()))return {cidade:'Município não informado',uf:original.toUpperCase(),aviso:true};
  if(UF_NAMES[normalized])return {cidade:'Município não informado',uf:UF_NAMES[normalized],aviso:true};
- const parts=original.split(/\s*\/\s*|\s+[-–—]\s+|\s*,\s*/).filter(Boolean);
- if(parts.length>1){const suf=norm(parts.at(-1)),uf=UF_LIST.has(parts.at(-1).toUpperCase())?parts.at(-1).toUpperCase():UF_NAMES[suf];
-  if(uf)return {cidade:parts.slice(0,-1).join(', ').trim()||'Município não informado',uf,aviso:false};}
+
+ // Aceita Cidade/UF, Cidade - UF, Cidade-UF, Cidade,UF e Cidade UF.
+ const suffix=original.match(/^(.*?)\s*(?:\/|[-–—,]\s*|\s+)([A-Za-z]{2})$/);
+ if(suffix){
+  const city=suffix[1].trim(),code=suffix[2].toUpperCase();
+  if(UF_LIST.has(code))return {cidade:city||'Município não informado',uf:code,aviso:!city};
+ }
  const states=Object.keys(UF_NAMES).sort((a,b)=>b.length-a.length);
- for(const state of states){if(normalized.endsWith(' '+state)){const uf=UF_NAMES[state],city=original.slice(0,original.length-state.length).replace(/[\s\-–,]+$/,'').trim();return {cidade:city||'Município não informado',uf,aviso:!city};}}
+ for(const state of states){
+  if(normalized.endsWith(' '+state)){
+   const uf=UF_NAMES[state],city=original.slice(0,original.length-state.length).replace(/[\s\-–,]+$/,'').trim();
+   return {cidade:city||'Município não informado',uf,aviso:!city};
+  }
+ }
  if(CITIES[normalized])return {cidade:original,uf:CITIES[normalized],aviso:false};
  return null; // Dado ambíguo: nunca escolher UF arbitrariamente.
 }
