@@ -3,7 +3,7 @@
 const $=s=>document.getElementById(s);
 const cfg=window.FPSE_CONFIG||{};
 const client=(window.supabase&&cfg.supabaseUrl?.startsWith('https://')&&cfg.publishableKey&&!cfg.publishableKey.includes('COLE_'))?window.supabase.createClient(cfg.supabaseUrl,cfg.publishableKey):null;
-let records=[],filter='all',editing=null;
+let records=[],filter='all',editing=null,searchTerm='';
 const ufs='AC AL AP AM BA CE DF ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO'.split(' ');
 $('uf').replaceChildren(...ufs.map(uf=>{const o=document.createElement('option');o.value=uf;o.textContent=uf;return o;}));
 function note(t,error=false){$('notices').textContent=t; $('notices').classList.toggle('error',error)}
@@ -16,17 +16,29 @@ async function refresh(){if(!await checkAdmin())return;const {data,error}=await 
  if(error)return note('Falha ao listar: '+error.message,true);records=data||[];draw();
  const {data:status}=await client.from('sync_status').select('ultima_execucao,resultado').eq('id',1).maybeSingle();
  $('sync-status').textContent=status?.ultima_execucao?new Date(status.ultima_execucao).toLocaleString('pt-BR')+' — '+(status.resultado||''):'Ainda sem execução';}
-function draw(){const approved=records.filter(x=>x.aprovado).length;const pending=records.length-approved;
+function draw(){
+ const approved=records.filter(x=>x.aprovado).length;const pending=records.length-approved;
+ const ufs=new Set(records.map(x=>(x.uf||'').toUpperCase()).filter(Boolean));
  $('stats').textContent=`${records.length} registros · ${approved} publicados · ${pending} pendentes`;
- const view=records.filter(x=>filter==='all'||(filter==='approved'?x.aprovado:!x.aprovado));const holder=$('profiles');holder.replaceChildren();
- if(!view.length){holder.appendChild(text('p','muted','Nenhum perfil nesta categoria.'));return}
- for(const v of view){const row=text('article','profile','');const info=text('div','', '');info.append(text('h3','',v.nome),text('p','',`${v.cidade||''} · ${v.uf||''} · ${v.origem||'manual'}`));
+ $('stat-total').textContent=records.length;$('stat-approved').textContent=approved;$('stat-pending').textContent=pending;$('stat-ufs').textContent=ufs.size;
+ $('filter-all-count').textContent=records.length;$('filter-approved-count').textContent=approved;$('filter-pending-count').textContent=pending;
+ const byUF={};for(const r of records){const uf=(r.uf||'').toUpperCase();if(uf)byUF[uf]=(byUF[uf]||0)+1;}
+ const sorted=Object.entries(byUF).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0]));const max=Math.max(1,...sorted.map(x=>x[1]));
+ const summary=$('state-summary');summary.replaceChildren();
+ if(!sorted.length)summary.appendChild(text('p','muted','Ainda não há estados para apresentar.'));
+ for(const [uf,n] of sorted){const row=text('div','state-row','');row.append(text('strong','state-code',uf));const track=text('span','state-track','');const fill=document.createElement('i');fill.style.width=`${n/max*100}%`;track.append(fill);row.append(track,text('strong','state-count',String(n)));summary.append(row);}
+ const term=searchTerm.trim().toLocaleLowerCase('pt-BR');
+ const view=records.filter(x=>(filter==='all'||(filter==='approved'?x.aprovado:!x.aprovado))&&(!term||[x.nome,x.cidade,x.uf,x.mensagem,x.origem].some(v=>String(v||'').toLocaleLowerCase('pt-BR').includes(term))));
+ const holder=$('profiles');holder.replaceChildren();
+ if(!view.length){holder.appendChild(text('p','muted',term?'Nenhum perfil corresponde à sua busca.':'Nenhum perfil nesta categoria.'));return}
+ for(const v of view){const row=text('article','profile','');const info=text('div','profile-info','');info.append(text('h3','',v.nome),text('p','',`${v.cidade||'Localidade não informada'} · ${v.uf||'UF não informada'} · ${v.origem||'manual'}`));
  const status=text('span','status'+(v.aprovado?' ok':''),v.aprovado?'Publicado':'Pendente');info.appendChild(status);
  if(v.revisao_pendente)info.appendChild(text('p','', 'Atualizado pela planilha: confira e aprove novamente.'));
  const actions=text('div','actions','');const edit=text('button','secondary','Editar');edit.type='button';edit.onclick=()=>openEditor(v);actions.append(edit);
  const toggle=text('button','',v.aprovado?'Retirar do ar':'Aprovar');toggle.type='button';toggle.onclick=()=>setApproval(v,!v.aprovado);actions.append(toggle);
  if(v.origem!=='google_sheets'){const del=text('button','danger','Excluir');del.type='button';del.onclick=()=>remove(v);actions.append(del)}
- row.append(info,actions);holder.append(row);}}
+ row.append(info,actions);holder.append(row);}
+}
 async function setApproval(v,value){if(!confirm(value?'Publicar este perfil no site?':'Retirar este perfil do site?'))return;
  const {error}=await client.from('voluntarios').update({aprovado:value,revisao_pendente:false}).eq('id',v.id);if(error)return note(error.message,true);note('Status atualizado.');await refresh();}
 async function remove(v){if(!confirm('Excluir definitivamente este perfil manual?'))return;
@@ -47,5 +59,6 @@ $('login-form').addEventListener('submit',async ev=>{ev.preventDefault();if(!cli
 $('logout').onclick=async()=>{await client.auth.signOut();$('dashboard').hidden=true;$('login').hidden=false;$('editor').hidden=true;note('Sessão encerrada.')};
 $('new').onclick=()=>openEditor(null);$('cancel').onclick=()=>{$('editor').hidden=true;editing=null};$('reload').onclick=refresh;
 for(const f of document.querySelectorAll('.filter'))f.onclick=()=>{filter=f.dataset.filter;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===f));draw()};
+$('profile-search').addEventListener('input',ev=>{searchTerm=ev.target.value;draw()});
 if(!client)note('Antes de entrar, configure docs/config.js com a URL e a chave publicável do Supabase.',true);else refresh();
 })();

@@ -98,7 +98,10 @@
 @media (max-width:360px){.poster{min-height:980px}.profile-page{min-height:1090px}.manifesto{top:207px}.map-stage{top:320px}.select-button{top:805px}.profile-identity{top:240px}.quote-section{top:545px}.profile-controls{top:830px}.mascot-parade{top:925px}}
 .screen-enter{animation:screen-enter .45s ease both}.profile-swap .identity-main,.profile-swap .avatar,.profile-swap .quote-content{animation:profile-swap .28s ease both}
 @keyframes screen-enter{from{opacity:.75;filter:blur(4px)}to{opacity:1;filter:blur(0)}}
-@keyframes profile-swap{from{opacity:.3;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes profile-swap{from{opacity:.3}to{opacity:1}}
+/* A animação não pode sobrescrever o translateX(-50%) que centraliza o retrato. */
+.profile-swap .avatar{animation:avatar-fade .28s ease both}
+@keyframes avatar-fade{from{opacity:.35}to{opacity:1}}
 
 /* Versão institucional — sistema tipográfico coeso e sem fontes manuscritas. */
 .state-dialog,.uf-choice,.dialog-close,.profile-controls,.map-tip{font-family:var(--font-body)}
