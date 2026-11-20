@@ -138,3 +138,189 @@
 @media(max-width:650px){.app-shell{width:100%;padding:0}.poster{width:min(100vw,56.25dvh);min-width:0;aspect-ratio:9/16;min-height:0;height:auto;container-type:inline-size}.home-page .brand-home{top:2.6%;right:3%;width:14%}.home-page #main-title{top:7%;left:18%;width:64%}.home-intro{top:20%;left:6%;width:88%}.home-headline{font-size:5.2cqw;margin-bottom:3cqw}.home-intro p{font-size:2.75cqw;line-height:1.42}.home-page .map-stage{top:36%;left:7%;width:86%;height:46%}.home-page .select-button{top:85.5%;left:31%;width:38%;height:3.8%;font-size:2.1cqw;min-height:0}.home-page .footer-logos{height:7.7%}.profile-header{height:6.4%;padding:1.1% 3%}.profile-event{width:25%}.profile-brand{width:14%}.profile-page .profile-identity.glass-profile-card{top:13%;left:5%;width:90%;height:68%;border-radius:7cqw}.profile-page .identity-main{top:51%;left:7%;right:7%}.profile-page .identity-main h1{font-size:4.5cqw;max-width:80%}.profile-page .location-band p{font-size:2.7cqw}.profile-page .flag-mascot{top:56%;right:7%;width:14%;border-radius:9px}.profile-page .quote-section{top:67%;left:7%;width:86%;height:26%;padding-top:1.5%}.profile-page .quote-content{font-size:2.3cqw;line-height:1.5}.profile-page .quote-content.is-long{font-size:2.05cqw}.profile-page .quote-content.is-very-long{font-size:1.82cqw}.profile-page .profile-controls{top:82.5%;left:14%;width:72%;height:6%;gap:3%}.profile-page .back-button{font-size:1.9cqw;height:5.8cqw;min-height:0}.profile-page .round-control{width:5.8cqw;height:5.8cqw;font-size:3.8cqw}.profile-page .profile-counter{font-size:1.45cqw}}
 @media(max-width:380px){.profile-page .identity-main h1{font-size:4.7cqw}.profile-page .quote-content{font-size:2.2cqw}}
 @media(prefers-reduced-motion:reduce){.profile-page .avatar,.profile-page .identity-main,.profile-page .quote-content{animation:none!important}}
+
+
+/* ===== Totem 9:16 fixo — mesma lógica de escala do Quiz ===== */
+html, body {
+  width:100%;
+  height:100%;
+  min-height:100%;
+  margin:0;
+  overflow:hidden;
+  background:#111;
+}
+.app-shell {
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100dvh;
+  min-height:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0;
+  overflow:hidden;
+  background:#111;
+}
+.poster {
+  flex:none;
+  width:min(100vw, 56.25dvh);
+  height:auto;
+  aspect-ratio:9 / 16;
+  max-width:none;
+  min-height:0;
+  max-height:100dvh;
+  overflow:hidden;
+  container-type:inline-size;
+  box-shadow:none;
+}
+.poster[hidden] { display:none !important; }
+
+/* Início: usa a nova arte oficial e mantém a composição na tela vertical. */
+.home-page { background:#fff; color:#101010; }
+.home-page .brand-home {
+  top:2.6%; right:3.1%; width:14%; height:auto; z-index:4;
+}
+.home-page #main-title {
+  top:5.7%; left:20%; width:60%; margin:0; z-index:4;
+}
+.home-page .main-title-art { display:block; width:100%; height:auto; }
+.home-page .home-intro {
+  position:absolute; top:20%; left:7%; width:86%; text-align:center; z-index:4;
+}
+.home-page .home-headline {
+  font-family:var(--font-display); font-size:5.05cqw; line-height:1.02;
+  letter-spacing:-.045em; font-weight:800; color:#405493; margin:0 0 3cqw;
+}
+.home-page .home-headline span { color:#43aa35; }
+.home-page .home-headline em { color:#e30613; font-style:normal; }
+.home-page .home-intro p {
+  font-family:var(--font-display); font-weight:500; font-size:2.65cqw;
+  line-height:1.4; color:#171717; margin:0 auto; max-width:96%;
+}
+.home-page .map-stage {
+  left:9%; top:36%; width:82%; height:45%; filter:none;
+}
+.home-page #brazil-map { display:block; width:100%; height:100%; overflow:visible; }
+.home-page .map-state { stroke:#fff; stroke-width:2.1; }
+.home-page .select-button {
+  left:34%; top:85.5%; width:32%; height:3.6%; min-height:0;
+  font-size:1.85cqw; z-index:5;
+}
+.home-page .school-mascot, .home-page .map-tip { display:none !important; }
+.home-page .footer-logos {
+  height:7.8%; background:#fff; bottom:0;
+}
+.home-page .footer-logos img { width:87%; max-height:75%; }
+
+/* Perfil: somente a arte da Mostra no cabeçalho, sem logo PSE no topo. */
+.profile-page { background:#f5f5f4; }
+.profile-header {
+  position:absolute; top:0; left:0; width:100%; height:7.2%;
+  display:flex; align-items:center; justify-content:center;
+  padding:0 4%; background:#fff; z-index:9;
+}
+.profile-header .profile-event {
+  display:block; width:46%; max-width:none; max-height:86%;
+  height:auto; object-fit:contain;
+}
+.profile-header .profile-brand { display:none !important; }
+
+/* Perfil segue o mesmo quadro 9:16; nenhum breakpoint altera a proporção. */
+.profile-page .profile-identity.glass-profile-card {
+  position:absolute; top:13%; left:7%; width:86%; height:67.5%;
+  border-radius:7.2cqw; overflow:hidden;
+  background:linear-gradient(39.18deg,#c5cecd 16.63%,#e5ebea 123.58%);
+  box-shadow:0 20px 48px #23332b20; border:1px solid #ffffffd9; z-index:4;
+}
+.profile-page .avatar {
+  position:absolute; inset:0; width:100%; height:100%; top:0; left:0;
+  transform:none; border:0; border-radius:inherit; overflow:hidden;
+  background:linear-gradient(39deg,#c5cecd,#e5ebea); z-index:0;
+}
+.profile-page .avatar>img {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center 28%; border-radius:inherit;
+}
+.profile-page .avatar-landscape {
+  border-radius:inherit; background:linear-gradient(145deg,#cbd7d6,#e7edec);
+}
+.profile-page .avatar-landscape .cloud,
+.profile-page .avatar-landscape .hill { display:none !important; }
+.profile-page .profile-glass-gradient {
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(180deg,rgba(229,235,234,0) 27%,rgba(229,235,234,.16) 42%,rgba(229,235,234,.84) 61%,rgba(229,235,234,.98) 100%);
+}
+.profile-page .identity-main {
+  position:absolute; z-index:3; top:51%; left:7%; right:7%; height:auto;
+  min-height:12%; display:flex; flex-direction:column; align-items:flex-start;
+  justify-content:flex-end; text-align:left;
+}
+.profile-page .identity-main h1 {
+  font-family:var(--font-display); font-size:4.15cqw; line-height:1.12;
+  font-weight:700; letter-spacing:-.045em; color:#101817;
+  max-width:82%; margin:0; overflow-wrap:anywhere;
+}
+.profile-page .location-band {
+  position:static; width:auto; height:auto; background:transparent;
+  border-radius:0; padding:0; margin-top:1.5cqw; justify-content:flex-start;
+}
+.profile-page .location-band p {
+  font-family:var(--font-display); font-size:2.45cqw; line-height:1.3;
+  font-weight:500; color:#34413f; max-width:100%; text-align:left;
+}
+.profile-page .flag-mascot {
+  position:absolute; z-index:5; right:7%; top:56%; bottom:auto;
+  width:13.5%; height:auto; aspect-ratio:1.35; object-fit:contain;
+  border:3px solid #ffffffd9; border-radius:10px;
+  box-shadow:0 6px 16px #17241e2b; filter:none;
+}
+.profile-page .quote-section {
+  position:absolute; z-index:3; top:68%; left:7%; width:86%; height:25%;
+  border:0; border-radius:0; background:transparent;
+  display:flex; align-items:flex-start; justify-content:flex-start;
+  padding:1.5% 0 0; overflow:hidden;
+}
+.profile-page .quotes-art { display:none !important; }
+.profile-page .quote-content {
+  width:100%; font-family:var(--font-display); font-size:2.2cqw;
+  line-height:1.52; font-weight:500; color:#172522; text-align:left;
+  max-height:100%; overflow:auto; white-space:pre-wrap; overflow-wrap:anywhere;
+}
+.profile-page .quote-content.is-long { font-size:1.95cqw; line-height:1.46; text-align:left; }
+.profile-page .quote-content.is-very-long { font-size:1.72cqw; line-height:1.4; text-align:left; }
+.profile-page .quote-scroll-hint {
+  bottom:0; left:0; background:#e5ebea; color:#53615d;
+  font-family:var(--font-display); font-size:1.15cqw;
+}
+.profile-page .profile-controls {
+  top:82.2%; left:19%; width:62%; height:6%;
+  gap:3%; align-items:center;
+}
+.profile-page .nav-center { flex:1.3; }
+.profile-page .back-button { height:5.1cqw; min-height:0; font-size:1.65cqw; }
+.profile-page .round-control {
+  width:5.1cqw; height:5.1cqw; font-size:3cqw;
+  border:2px solid #405493; color:#405493; background:#fff;
+}
+.profile-page .profile-counter {
+  font-family:var(--font-display); font-size:1.25cqw;
+  color:#5c6965; margin-top:.7cqw;
+}
+.profile-page .footer-logos { height:7.8%; background:#fff; }
+.profile-page .footer-logos img { width:87%; max-height:75%; }
+
+/* Evita regras antigas de layout fluido em celulares: o poster só diminui inteiro. */
+@media (max-width:650px), (max-height:700px) {
+  .app-shell { width:100vw; height:100dvh; min-height:0; padding:0; }
+  .poster {
+    width:min(100vw,56.25dvh) !important;
+    height:auto !important; min-height:0 !important;
+    aspect-ratio:9 / 16 !important; container-type:inline-size !important;
+  }
+  .home-page .home-intro { top:20%; left:7%; width:86%; }
+  .home-page .map-stage { top:36%; left:9%; width:82%; height:45%; }
+  .home-page .select-button { top:85.5%; left:34%; width:32%; height:3.6%; }
+  .profile-page .profile-identity.glass-profile-card { top:13%; left:7%; width:86%; height:67.5%; }
+  .profile-page .profile-controls { top:82.2%; left:19%; width:62%; height:6%; }
+}

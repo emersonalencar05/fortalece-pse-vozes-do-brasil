@@ -1,4 +1,4 @@
-ATUALIZAÇÃO FORTALECE PSE — PÁGINA INICIAL, PERFIS E ADMINISTRAÇÃO
+ATUALIZAÇÃO FORTALECE PSE — TOTEM 9:16 FIXO
 
 INSTALAÇÃO
 1. No GitHub Desktop, faça Fetch origin e Pull origin na branch main.
@@ -8,14 +8,21 @@ INSTALAÇÃO
 5. Faça Commit to main e Push origin.
 
 ARQUIVOS
-- docs/index.html; docs/src/app.js; docs/src/styles.css
+- docs/index.html
+- docs/src/styles.css
+- docs/assets/mostra-nacional-nova.png
+- docs/assets/logo-pse-nova.png
 - docs/admin.html, docs/admin.css, docs/admin.js
-- docs/assets/bandeiras/*.png (27 bandeiras)
+- docs/assets/bandeiras/*.png
 
 ALTERAÇÕES
-- Página inicial redesenhada conforme a referência, preservando o mapa SVG e a seleção dos estados.
-- Perfil em tela vertical 9:16, com cartão de vidro inspirado no Figma/Quiz, foto em destaque, nome abreviado (primeiro + último sobrenome), bandeira do estado, cidade + estado, mensagem e navegação anterior/próximo.
-- Mantém o painel administrativo redesenhado da versão-base.
+- Quadro público travado em 9:16, como o Quiz: em qualquer tela o conteúdo é reduzido/aumentado como um único totem, sem reorganização dos elementos.
+- Página inicial usa as novas artes enviadas: imagem da 1ª Mostra e logo Fortalece PSE.
+- Perfil mostra somente a imagem da Mostra no cabeçalho; remove a logo PSE do topo.
+- Bandeira oficial do estado no perfil, sem mascotes Zé Gotinha.
+- Mantém mapa, fotos, nomes, localização, mensagens, setas e rodapé institucional.
+- Mantém o painel administrativo e os arquivos de sincronização/backend intactos.
 
 IMPORTANTE
-ZIP de atualização por sobreposição. NÃO apague o repositório. Não altera docs/config.js, .github/, scripts/, supabase/, zegotinha-worker/ nem Secrets. O banco mantém o nome completo; apenas a apresentação pública abrevia. Mensagens e fotos continuam vindo do Supabase. Após Push, aguarde GitHub Pages e atualize com Ctrl+F5.
+ZIP de atualização por sobreposição. NÃO apague o repositório. Não altera docs/config.js, .github/, scripts/, supabase/, zegotinha-worker/ nem Secrets.
+Após Push, aguarde GitHub Pages e atualize com Ctrl+F5.
