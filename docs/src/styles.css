@@ -324,3 +324,77 @@ html, body {
   .profile-page .profile-identity.glass-profile-card { top:13%; left:7%; width:86%; height:67.5%; }
   .profile-page .profile-controls { top:82.2%; left:19%; width:62%; height:6%; }
 }
+
+/* ===== Ajustes finais solicitados: arte oficial, perfil limpo e controles ===== */
+.home-page .brand-home {
+  top:2.1%; right:3.2%; width:17%; height:auto;
+  object-fit:contain; z-index:4;
+}
+.home-page #main-title {
+  top:5.8%; left:8.5%; width:72%; z-index:4;
+}
+.home-page .main-title-art { width:100%; height:auto; object-fit:contain; }
+.home-page .home-intro { top:22.8%; }
+.home-page .map-stage { top:38%; }
+.home-page .select-button { top:86%; }
+
+/* Sem cabeçalho de logos/arte no perfil: foto, identificação, mensagem e rodapé. */
+.profile-page .profile-header { display:none !important; }
+.profile-page .profile-identity.glass-profile-card {
+  top:7.2%; left:7%; width:86%; height:73.3%;
+}
+
+/* Contorno das UFs mais delicado; hover/seleção continuam destacados sem engrossar demais. */
+.home-page .map-state { stroke:#fff; stroke-width:1.25; }
+.home-page .map-state:hover,
+.home-page .map-state:focus-visible { stroke:#fffdf1; stroke-width:2.2; }
+.home-page .map-state.is-active { stroke:#fff; stroke-width:2.6; }
+
+/* Controles circulares com acabamento mais leve e consistente. */
+.profile-page .profile-controls {
+  top:82.1%; left:16%; width:68%; height:6.2%;
+  gap:4%; align-items:center; justify-content:center;
+}
+.profile-page .nav-center { flex:1; min-width:0; display:flex; flex-direction:column; align-items:stretch; }
+.profile-page .round-control {
+  appearance:none; -webkit-appearance:none;
+  display:grid; place-items:center; flex:0 0 auto;
+  width:5.8cqw; height:5.8cqw; min-width:34px; min-height:34px;
+  padding:0; border:1.5px solid #d9e0e8; border-radius:50%;
+  background:linear-gradient(145deg,#fff 0%,#f1f4f8 100%);
+  color:#405493; font-family:Arial,sans-serif; font-size:3.5cqw;
+  font-weight:500; line-height:1; text-align:center;
+  box-shadow:0 3px 10px #243b6418, inset 0 1px 0 #fff;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+}
+.profile-page .round-control:hover {
+  color:#fff; border-color:#405493;
+  background:linear-gradient(145deg,#536bad,#344a89);
+  box-shadow:0 5px 14px #243b6430; transform:translateY(-1px);
+}
+.profile-page .round-control:active { transform:scale(.94); }
+.profile-page .round-control:focus-visible { outline:2px solid #e6b900; outline-offset:3px; }
+.profile-page .back-button {
+  min-height:0; height:5.5cqw; border-radius:999px;
+  font-size:1.7cqw; padding:0 1.8cqw;
+  box-shadow:0 4px 12px #243b6420;
+}
+.profile-page .profile-counter { margin-top:.65cqw; }
+@media (max-width:650px), (max-height:700px) {
+  .home-page .home-intro { top:22.8%; }
+  .home-page .map-stage { top:38%; }
+  .home-page .select-button { top:86%; }
+  .profile-page .profile-identity.glass-profile-card { top:7.2%; height:73.3%; }
+  .profile-page .profile-controls { top:82.1%; left:16%; width:68%; height:6.2%; }
+}
+/* Proporções da capa após recorte das áreas transparentes das artes oficiais. */
+.home-page #main-title { left:8.5%; top:6.1%; width:62%; }
+.home-page .home-intro { top:25.3%; }
+.home-page .map-stage { top:40.5%; height:43%; }
+.home-page .select-button { top:86%; }
+@media (max-width:650px), (max-height:700px) {
+  .home-page #main-title { left:8.5%; top:6.1%; width:62%; }
+  .home-page .home-intro { top:25.3%; }
+  .home-page .map-stage { top:40.5%; height:43%; }
+  .home-page .select-button { top:86%; }
+}

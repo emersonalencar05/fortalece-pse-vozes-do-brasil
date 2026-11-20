@@ -1,0 +1,17 @@
+ATUALIZACAO VISUAL - FORTALECE PSE
+
+Extraia este ZIP na raiz do repositorio e permita substituir os arquivos.
+Ele atualiza somente:
+- docs/index.html
+- docs/src/styles.css
+- docs/assets/mostra-nacional-nova.png
+- docs/assets/logo-pse-nova.png
+
+Correcoes:
+- Artes oficiais da 1a Mostra e logo PSE recortadas para remover margens transparentes e exibidas em tamanho adequado na capa.
+- Cabeçalho de logos removido dos perfis; permanecem a foto do extensionista, nome/localizacao, mensagem e logos institucionais inferiores.
+- Contorno dos estados mais fino, com destaque discreto ao passar/selecionar.
+- Botoes anterior/proximo circulares com acabamento refinado e botao Voltar ao mapa em formato pill.
+
+Nao substitua config.js, arquivos do Supabase, sincronizacao, mapa de dados ou secrets.
+Depois, commit e push no GitHub Desktop.
