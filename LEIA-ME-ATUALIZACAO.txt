@@ -1,0 +1,21 @@
+ATUALIZAÇÃO FORTALECE PSE — PÁGINA INICIAL, PERFIS E ADMINISTRAÇÃO
+
+INSTALAÇÃO
+1. No GitHub Desktop, faça Fetch origin e Pull origin na branch main.
+2. Faça uma cópia de segurança do repositório.
+3. Extraia o conteúdo deste ZIP diretamente na raiz do repositório fortalece-pse-vozes-do-brasil.
+4. Mescle as pastas e substitua os arquivos quando solicitado.
+5. Faça Commit to main e Push origin.
+
+ARQUIVOS
+- docs/index.html; docs/src/app.js; docs/src/styles.css
+- docs/admin.html, docs/admin.css, docs/admin.js
+- docs/assets/bandeiras/*.png (27 bandeiras)
+
+ALTERAÇÕES
+- Página inicial redesenhada conforme a referência, preservando o mapa SVG e a seleção dos estados.
+- Perfil em tela vertical 9:16, com cartão de vidro inspirado no Figma/Quiz, foto em destaque, nome abreviado (primeiro + último sobrenome), bandeira do estado, cidade + estado, mensagem e navegação anterior/próximo.
+- Mantém o painel administrativo redesenhado da versão-base.
+
+IMPORTANTE
+ZIP de atualização por sobreposição. NÃO apague o repositório. Não altera docs/config.js, .github/, scripts/, supabase/, zegotinha-worker/ nem Secrets. O banco mantém o nome completo; apenas a apresentação pública abrevia. Mensagens e fotos continuam vindo do Supabase. Após Push, aguarde GitHub Pages e atualize com Ctrl+F5.

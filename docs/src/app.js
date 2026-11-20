@@ -21,7 +21,8 @@ let refreshPending = false;
 const photoCache = new Map();
 // O modo de demonstração só existe em localhost: nunca mostra perfis fictícios no GitHub Pages.
 const DEMO_FORCED = ['localhost','127.0.0.1','[::1]'].includes(location.hostname) && new URLSearchParams(location.search).get('demo') === '1';
-const prettyLocation = p => p.cidade && p.cidade !== 'Município não informado' ? `${p.cidade}/${p.uf}` : (UFS[p.uf]?.nome ?? p.uf);
+const prettyLocation = p => p.cidade && p.cidade !== 'Município não informado' ? `${p.cidade} · ${UFS[p.uf]?.nome ?? p.uf}` : (UFS[p.uf]?.nome ?? p.uf);
+const displayName = value => { const parts = String(value || '').trim().split(/\s+/).filter(Boolean); return parts.length > 1 ? `${parts[0]} ${parts[parts.length - 1]}` : (parts[0] || 'Participante'); };
 const sortedForUF = uf => allProfiles.filter(p=>p.uf === uf).sort((a,b)=>(a.ordem??999)-(b.ordem??999)||a.nome.localeCompare(b.nome,'pt-BR'));
 
 function previewProfiles(){
@@ -124,14 +125,14 @@ function renderProfile(){
   const list=sortedForUF(currentUF);
   const p=list[currentIndex];
   const hasProfile=Boolean(p);
-  $('profile-name').textContent=hasProfile?p.nome:'Nenhum perfil publicado';
+  $('profile-name').textContent=hasProfile?displayName(p.nome):'Nenhum perfil publicado';
   $('profile-location').textContent=hasProfile?prettyLocation(p):UFS[currentUF].nome;
   const message=hasProfile?p.mensagem:`Ainda não há depoimentos publicados de ${UFS[currentUF].nome}. Volte ao mapa para explorar outro território.`;
   const messageEl=$('profile-message');messageEl.textContent=message;messageEl.scrollTop=0;
   messageEl.classList.toggle('is-long',message.length>290);
   messageEl.classList.toggle('is-very-long',message.length>650);
-  const path=`./assets/${currentUF}.webp`;
-  flag.src=path;flag.alt=`Zé Gotinha segurando a bandeira de ${UFS[currentUF].nome}`;
+  const path=`./assets/bandeiras/${currentUF.toLowerCase()}.png`;
+  flag.src=path;flag.alt=`Bandeira de ${UFS[currentUF].nome}`;
   clearAvatar();
   if(p?.foto_path){
     const cacheKey=p.foto_path;

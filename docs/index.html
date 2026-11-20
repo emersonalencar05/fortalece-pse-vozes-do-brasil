@@ -10,64 +10,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./src/styles.css" />
+  <link rel="stylesheet" href="./src/styles.css?v=20261120-totem2" />
 </head>
 <body>
   <div id="app" class="app-shell">
     <main id="home" class="poster home-page" aria-labelledby="main-title">
       <div class="color-line" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      <img class="geometry geometry-home" src="./assets/fundo.webp" alt="" aria-hidden="true" />
       <img class="brand-home" src="./assets/logo.webp" alt="Fortalece PSE" />
       <h1 id="main-title"><img class="main-title-art" src="./assets/mostranacional.webp" alt="1ª Mostra Nacional Fortalece PSE — Brasília-DF, 24 e 25 de novembro de 2026" /></h1>
-      <div class="manifesto">
-        <h2>O BRASIL QUE SE FORMA EM REDE:</h2>
-        <p>Uma experiência interativa da 1ª Mostra Nacional para revelar os estudantes que constroem, no cotidiano, a articulação entre saúde, educação e participação social nas universidades.</p>
-      </div>
-      <div class="map-stage">
-        <svg id="brazil-map" viewBox="0 0 1024 1014" role="group" aria-label="Mapa interativo do Brasil com 27 unidades federativas. Clique ou toque em um estado.">
-          <g id="map-states"></g>
-        </svg>
-        <div id="map-tooltip" class="map-tooltip" hidden></div>
-      </div>
-      <img class="school-mascot" src="./assets/personagem.webp" alt="Zé Gotinha estudante, com mochila e livros" />
+      <section class="home-intro" aria-label="Apresentação">
+        <h2 class="home-headline">O <span>BRASIL</span> INTEIRO<br>FORTALECE O <em>PSE!</em></h2>
+        <p>Explore o mapa, escolha seu estado e conheça os extensionistas que fazem parte dessa mobilização.</p>
+      </section>
+      <div class="map-stage"><svg id="brazil-map" viewBox="0 0 1024 1014" role="group" aria-label="Mapa interativo do Brasil com 27 unidades federativas. Clique ou toque em um estado."><g id="map-states"></g></svg><div id="map-tooltip" class="map-tooltip" hidden></div></div>
       <button id="open-selector" class="pill-button select-button" type="button">Selecionar estado</button>
       <p class="map-tip">Toque em um estado para conhecer suas histórias</p>
       <footer class="footer-logos"><img src="./assets/instituicoes.webp" alt="Instituições realizadoras: UFSB, UFG, SUS, Ministério da Educação e Ministério da Saúde, Governo Federal" /></footer>
     </main>
 
     <main id="profile" class="poster profile-page" aria-labelledby="profile-name" hidden>
-      <header class="profile-header">
-        <img class="profile-event" src="./assets/mostranacional.webp" alt="1ª Mostra Nacional Fortalece PSE" />
-        <img class="profile-brand" src="./assets/logo.webp" alt="Fortalece PSE" />
-      </header>
-      <div class="profile-banner" aria-hidden="true"><img src="./assets/fundo_perfil.webp" alt="" /></div>
-      <div class="profile-ribbon color-line" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      <img class="geometry geometry-profile" src="./assets/fundo.webp" alt="" aria-hidden="true" />
-      <section class="profile-identity" aria-label="Identificação do participante">
-        <div class="avatar" id="participant-avatar">
-          <div class="avatar-landscape" aria-hidden="true"><i class="cloud"></i><i class="hill hill-far"></i><i class="hill hill-near"></i></div>
-        </div>
-        <div class="identity-main">
-          <p class="profile-eyebrow" id="profile-eyebrow">Vozes do Brasil</p>
-          <h1 id="profile-name">[NOME]</h1>
-        </div>
-        <div class="location-band"><p id="profile-location">[cidade/estado]</p></div>
-        <img class="flag-mascot" id="profile-state-mascot" src="./assets/MG.webp" alt="Zé Gotinha com a bandeira de Minas Gerais" />
+      <div class="color-line" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <header class="profile-header"><img class="profile-event" src="./assets/mostranacional.webp" alt="1ª Mostra Nacional Fortalece PSE" /><img class="profile-brand" src="./assets/logo.webp" alt="Fortalece PSE" /></header>
+      <section class="profile-identity glass-profile-card" aria-label="Perfil do extensionista">
+        <div class="avatar" id="participant-avatar"><div class="avatar-landscape" aria-hidden="true"><i class="cloud"></i><i class="hill hill-far"></i><i class="hill hill-near"></i></div></div>
+        <div class="profile-glass-gradient" aria-hidden="true"></div>
+        <div class="identity-main"><h1 id="profile-name">[NOME]</h1><div class="location-band"><p id="profile-location">[cidade · estado]</p></div></div>
+        <img class="flag-mascot" id="profile-state-mascot" src="./assets/bandeiras/mg.png" alt="Bandeira de Minas Gerais" />
+        <div class="quote-section" aria-label="Depoimento do participante"><div class="quote-content" id="profile-message" tabindex="0">[MENSAGEM]</div><span class="quote-scroll-hint" id="quote-scroll-hint" hidden>Deslize para ler a mensagem completa</span></div>
       </section>
-      <section class="quote-section" aria-label="Depoimento do participante">
-        <img src="./assets/aspas.webp" class="quotes-art" alt="" aria-hidden="true" />
-        <div class="quote-content" id="profile-message" tabindex="0">[MENSAGEM]</div>
-        <span class="quote-scroll-hint" id="quote-scroll-hint" hidden>Deslize para ler o texto completo</span>
-      </section>
-      <div class="profile-controls">
-        <button id="profile-prev" class="round-control" type="button" aria-label="Perfil anterior" title="Perfil anterior">‹</button>
-        <div class="nav-center">
-          <button id="back-home" class="pill-button back-button" type="button">Voltar ao mapa</button>
-          <div id="profile-counter" class="profile-counter" aria-live="polite">1 / 1</div>
-        </div>
-        <button id="profile-next" class="round-control" type="button" aria-label="Próximo perfil" title="Próximo perfil">›</button>
-      </div>
-      <img class="mascot-parade" src="./assets/zegotinhas.webp" alt="Oito desenhos do Zé Gotinha em diferentes poses" />
+      <div class="profile-controls"><button id="profile-prev" class="round-control" type="button" aria-label="Perfil anterior" title="Perfil anterior">‹</button><div class="nav-center"><button id="back-home" class="pill-button back-button" type="button">Voltar ao mapa</button><div id="profile-counter" class="profile-counter" aria-live="polite">1 / 1</div></div><button id="profile-next" class="round-control" type="button" aria-label="Próximo perfil" title="Próximo perfil">›</button></div>
       <footer class="footer-logos"><img src="./assets/instituicoes.webp" alt="Instituições realizadoras: UFSB, UFG, SUS, Ministério da Educação e Ministério da Saúde, Governo Federal" /></footer>
     </main>
   </div>
