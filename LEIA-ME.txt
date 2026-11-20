@@ -1,0 +1,6 @@
+ATUALIZAÇÃO: CENTRALIZAÇÃO DA ARTE DA 1ª MOSTRA
+
+Este pacote contém somente docs/src/styles.css.
+Substitua esse arquivo no repositório mantendo o caminho.
+A arte da 1ª Mostra fica centralizada horizontalmente na página inicial,
+sem alterar os demais elementos, o mapa, os perfis ou o conteúdo.

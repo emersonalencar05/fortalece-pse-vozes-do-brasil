@@ -398,3 +398,18 @@ html, body {
   .home-page .map-stage { top:40.5%; height:43%; }
   .home-page .select-button { top:86%; }
 }
+
+/* Centraliza horizontalmente a arte oficial da 1ª Mostra na capa do totem. */
+.home-page #main-title {
+  left: 50% !important;
+  width: 62% !important;
+  transform: translateX(-50%);
+  margin: 0;
+}
+@media (max-width:650px), (max-height:700px) {
+  .home-page #main-title {
+    left: 50% !important;
+    width: 62% !important;
+    transform: translateX(-50%);
+  }
+}
